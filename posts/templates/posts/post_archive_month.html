@@ -1,0 +1,15 @@
+{% extends "posts/base.html" %}
+
+{% block body %}
+
+<main role="main" class="container pt-5">
+
+<div class="row">
+  <div class="col blog-main">
+    <h4 class="pb-2">Showing posts from {{ month|date:"M, Y" }}</h4>
+    {% include "posts/post_result_table.html" %}
+  </div>
+</div>
+</main>
+
+{% endblock body %}

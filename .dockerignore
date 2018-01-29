@@ -1,0 +1,11 @@
+posts/migrations
+env
+db.sqlite3
+fixtures/
+htmlcov/
+tags
+.coverage
+.coveragerc
+.envrc
+.mypy_cache
+.gitignore

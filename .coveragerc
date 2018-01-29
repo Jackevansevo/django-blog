@@ -1,0 +1,9 @@
+# .coveragerc to control coverage.py
+[run]
+branch = True
+source = 
+    posts
+
+[report]
+skip_covered = True
+show_missing = True

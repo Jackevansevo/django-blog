@@ -1,0 +1,27 @@
+{% extends "posts/base.html" %}
+
+{% block body %}
+
+<main role="main" class="container pt-5">
+<div class="row">
+
+  <div class="col blog-main">
+
+    {% if posts %}
+      <div class="alert alert-success" role="alert">
+        <i class="fas fa-search" aria-hidden></i> &nbsp; Found 
+        {{ posts.count }} result{{ posts.count|pluralize }}
+      </div>
+    {% else %}
+      <div class="alert alert-warning" role="alert">
+        <i class="fas fa-exclamation-triangle" aria-hidden></i> &nbsp; No posts found matching "{{ request.GET.q }}"
+      </div>
+    {% endif %}
+
+    {% include "posts/post_result_table.html" %}
+
+  </div>
+</div>
+</main>
+
+{% endblock body %}

@@ -1,0 +1,74 @@
+{% extends "posts/base.html" %}
+rchi
+{% block body %}
+
+<main role="main" class="container pt-5">
+<div class="row">
+  <div class="col-md-8 blog-main">
+    {% for post in posts %}
+        {% include "posts/post.html" %}
+    {% empty %}
+      <div class="alert alert-warning" role="alert">
+        <i class="fas fa-exclamation-triangle" aria-hidden></i> &nbsp; No posts available
+      </div>
+    {% endfor %}
+
+    {% if posts.has_other_pages %}
+      <nav aria-label="Page navgiation">
+        <ul class="pagination">
+          {% if posts.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{ posts.previous_page_number }}">Newer</a></li>
+          {% else %}
+            <li class="page-item disabled"><a class="page-link" href="#">Newer</a></li>
+          {% endif %}
+
+          {% if posts.has_next %}
+          <li class="page-item"><a class="page-link" href="?page={{ posts.next_page_number }}">Older</a></li>
+          {% else %}
+          <li class="page-item disabled"><a class="page-link" href="#">Older</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+      {% endif %}
+  </div>
+  <aside class="col-md-4 blog-sidebar">
+      <div class="p-3 mb-3 bg-light rounded">
+          <h4>About</h4>
+          <p class="mb-0">
+            Student/programmer currently studying Computer
+            Science at the University of Bath
+          </p>
+      </div>
+      {% if archive %}
+          <div class="p-3">
+              <h4><i class="fa fa-calendar-alt" aria-hidden></i> Archives</h4>
+              <ol class="list-unstyled mb-0">
+                  {% for segment in archive %}
+                  <li><a href="{% url 'posts:archive_month' segment.year segment.month %}">{{ segment|date:"M - Y "}}</a></li>
+                  {% endfor %}
+              </ol>
+          </div>
+      {% endif %}
+      {% if tags %}
+      <div class="p-3">
+          <h4><i class="fas fa-tags"></i> Tags</h4>
+          <ol class="list-unstyled mb-0">
+              {% for tag in tags %}
+              <li>
+                  <h5>
+                      <a href="{{ tag.get_absolute_url }}" class="badge badge-dark" style="background-color: {{ tag.color_code }}">
+                          {{ tag.name }}
+                          <span class="badge badge-light">{{ tag.count }}</span>
+                          <span class="sr-only">post count</span>
+                      </a>
+                  </h5>
+              </li>
+              {% endfor %}
+          </ol>
+      </div>
+      {% endif %}
+  </aside>
+</div>
+</main>
+
+{% endblock body %}
