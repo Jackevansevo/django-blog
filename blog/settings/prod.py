@@ -1,10 +1,16 @@
 from .base import *
+import os
+
+# Load the secret key from environment variable
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # Disable debugging
 DEBUG = False
 TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+# Load server IP from environment variable
+SERVER_IP = os.environ['SERVER_IP']
+ALLOWED_HOSTS = [SERVER_IP]
 
 STATIC_ROOT = "/var/www/example.com/static/"
 
