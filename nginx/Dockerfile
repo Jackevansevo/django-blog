@@ -1,5 +1,0 @@
-FROM nginx:alpine
-RUN apk update
-RUN apk upgrade
-RUN apk add --update curl
-ADD default.conf /etc/nginx/conf.d/default.conf
