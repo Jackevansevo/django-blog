@@ -33,3 +33,6 @@ env
 
 # Tags
 tags
+
+# Ignore secrets file
+secrets
