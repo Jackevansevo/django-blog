@@ -22,7 +22,8 @@ TEMPLATE_DEBUG = False
 
 # Load server IP from environment variable
 SERVER_IP = get_env_variable('SERVER_IP')
-ALLOWED_HOSTS = [SERVER_IP]
+DOMAIN_NAME= get_env_variable('DOMAIN_NAME')
+ALLOWED_HOSTS = [SERVER_IP, DOMAIN_NAME]
 
 STATIC_ROOT = 'static'
 
