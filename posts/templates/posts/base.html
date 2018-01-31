@@ -18,8 +18,6 @@
   </head>
   <body>
     <div class="container pt-2">
-      {% load cache %}
-      {% cache None sidebar %}
       <nav class="navbar navbar-dark bg-dark navbar-expand-lg rounded">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -74,7 +72,6 @@
           </form>
         </div>
       </nav>
-      {% endcache %}
     </div>
 
     {% block body %}
