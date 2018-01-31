@@ -21,7 +21,6 @@ DEBUG = False
 TEMPLATE_DEBUG = False
 
 # Load server IP from environment variable
-DOMAIN_NAME = get_env_variable('DOMAIN_NAME')
 SERVER_IP = get_env_variable('SERVER_IP')
 ALLOWED_HOSTS = [SERVER_IP]
 
