@@ -17,13 +17,6 @@ coverage.xml
 *.cover
 .hypothesis/
 
-# Django stuff:
-*.log
-.static_storage/
-.media/
-static
-local_settings.py
-
 # Environments
 env
 .envrc
