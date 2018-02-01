@@ -1,31 +1,52 @@
-# Useful commands
+A simple Django Database
+
+# Installation
+
+Create a virtual environment
+
+    python -m venv env
+
+Activate the virtual environment
+
+    source env/bin/activate
+
+Install the dependencies
+
+    pip install -r requirements.txt
+
+Tell Django which settings file to use
+
+    export DJANGO_SETTINGS_MODULE=blog.settings.dev
+
+Initialize the database
+
+    ./manage.py makemigrations posts
+
+    ./manage.py migrate
+
+# Local Development
+
+## Runserver
+
+    ./manage.py runserver
+
 
 ## Running a test database
 
-```
-python manage.py testserver fixtures/db.json
-```
+    ./manage.py testserver fixtures/db.json
 
-## Loading a database snapshot
+# Running Tests
 
-```
-python manage.py loaddata fixtures/db.json
-```
+All Djagno tests can be ran with the following:
 
-## Recording a Database Snapshot
+    ./manage.py test posts --settings=blog.settings.test
 
-```
-env/bin/python manage.py dumpdata --indent=2 --exclude auth.permission --exclude contenttypes > fixtures/db.json
-```
+You may wish to pass some additional flags:
 
-## Running tests
+    ./manage.py test posts --failfast --settings=blog.settings.test
 
-```
-python manage.py test posts --failfast
-```
+## Test Coverage
 
-### Test Coverage
+A coverage report can be generated with the following command:
 
-```
-coverage run manage.py test posts; and coverage report
-```
+    coverage run manage.py test posts --settings=blog.settings.test; and coverage report
