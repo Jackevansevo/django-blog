@@ -27,18 +27,6 @@ ALLOWED_HOSTS = [SERVER_IP, DOMAIN_NAME]
 DEBUG = False
 TEMPLATE_DEBUG = False
 
-# Add GZIP middleware class
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.middleware.gzip.GZipMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
-
 SECURE_HSTS_SECONDS = 3600
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
