@@ -15,17 +15,29 @@ def get_env_variable(var_name):
 
 # Load the secret key from environment variable
 SECRET_KEY = get_env_variable('SECRET_KEY')
+SERVER_IP = get_env_variable('SERVER_IP')
+DOMAIN_NAME = get_env_variable('DOMAIN_NAME')
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+# Load server IP from environment variable
+ALLOWED_HOSTS = [SERVER_IP, DOMAIN_NAME]
 
 # Disable debugging
 DEBUG = False
 TEMPLATE_DEBUG = False
 
-# Load server IP from environment variable
-SERVER_IP = get_env_variable('SERVER_IP')
-DOMAIN_NAME = get_env_variable('DOMAIN_NAME')
-ALLOWED_HOSTS = [SERVER_IP, DOMAIN_NAME]
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+# Add GZIP middleware class
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
 
 SECURE_HSTS_SECONDS = 3600
 SECURE_CONTENT_TYPE_NOSNIFF = True
