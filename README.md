@@ -1,10 +1,6 @@
 # Simple Django Blog
 
----
-
 [![Coverage Status](https://coveralls.io/repos/github/Jackevansevo/django-blog/badge.svg?branch=master)](https://coveralls.io/github/Jackevansevo/django-blog?branch=master)
-
----
 
 ## Features
 
