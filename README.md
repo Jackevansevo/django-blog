@@ -63,7 +63,7 @@ You may wish to pass some additional flags:
 
 A coverage report can be generated with the following command:
 
-    coverage run manage.py test posts --settings=blog.settings.test; and coverage report
+    coverage run manage.py test posts --settings=blog.settings.test && coverage report
 
 # Screenshot
 
