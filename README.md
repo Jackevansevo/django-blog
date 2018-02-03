@@ -2,21 +2,18 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/Jackevansevo/django-blog/badge.svg?branch=master)](https://coveralls.io/github/Jackevansevo/django-blog?branch=master)
 
-## Features
+## Requirements
 
 * Django 2.0+
-* Python3.6
-* Code syntax highlighting with Pygments
+* Python3.6+
+* PyPy 3.5 compatible
+
+## Features
+* Code syntax highlighting (with Pygments)
 * RSS support
-* Post archives
-* Post tags
-
-## TODO
-
-* [ ] 100% Coverage
-* [ ] Handle user uploaded static media files
-* [ ] Docker integration
-* [ ] User configuration file
+* Post archive
+* Tags
+* Search
 
 # Installation
 
