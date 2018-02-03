@@ -2,21 +2,25 @@
 
 ---
 
+[![Coverage Status](https://coveralls.io/repos/github/Jackevansevo/django-blog/badge.svg?branch=master)](https://coveralls.io/github/Jackevansevo/django-blog?branch=master)
+
+---
+
 ## Features
 
-- Django 2.0+
-- Python3.6
-- Code syntax highlighting with Pygments
-- RSS support
-- Post archives
-- Post tags
+* Django 2.0+
+* Python3.6
+* Code syntax highlighting with Pygments
+* RSS support
+* Post archives
+* Post tags
 
 ## TODO
 
-- [ ] 100% Coverage
-- [ ] Handle user uploaded static media files
-- [ ] Docker integration
-- [ ] User configuration file
+* [ ] 100% Coverage
+* [ ] Handle user uploaded static media files
+* [ ] Docker integration
+* [ ] User configuration file
 
 # Installation
 
@@ -67,7 +71,6 @@ You may wish to pass some additional flags:
 A coverage report can be generated with the following command:
 
     coverage run manage.py test posts --settings=blog.settings.test; and coverage report
-
 
 # Screenshot
 
