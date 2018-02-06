@@ -23,16 +23,19 @@ INSTALLED_APPS += [
     'raven.contrib.django.raven_compat',
 ]
 
+MIDDLEWARE = [
+    'raven.contrib.django.raven_compat.middleware.Sentry404CatchMiddleware',
+] + MIDDLEWARE
 
 RAVEN_CONFIG = {
     'dsn': get_env_variable('SENTRY_URL'),
     # If you are using git, you can also automatically configure the
     # release based on the git info.
-    'release': raven.fetch_git_sha(os.path.abspath(os.pardir)),
+    'release': raven.fetch_git_sha(os.path.dirname(os.pardir)),
 }
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets/')
 
 # Load server IP from environment variable
 ALLOWED_HOSTS = [SERVER_IP, DOMAIN_NAME]

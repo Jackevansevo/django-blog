@@ -17,8 +17,8 @@ coverage.xml
 *.cover
 .hypothesis/
 
-# Application Static files
-blog/static
+# Application assets files
+blog/assets
 
 # Environments
 env
