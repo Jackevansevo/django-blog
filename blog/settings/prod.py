@@ -23,9 +23,6 @@ INSTALLED_APPS += [
     'raven.contrib.django.raven_compat',
 ]
 
-MIDDLEWARE = [
-    'raven.contrib.django.raven_compat.middleware.Sentry404CatchMiddleware',
-] + MIDDLEWARE
 
 RAVEN_CONFIG = {
     'dsn': get_env_variable('SENTRY_URL'),
