@@ -8,11 +8,13 @@
               <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
             </h1>
           </div>
-          <a href="{% url 'admin:posts_post_change' post.id %}">
-            <span class="icon">
-              <i class="fas fa-edit" style="margin-right: 0.5em;" aria-hidden="true"></i>
-            </span>
-          </a>
+          {% if request.user.is_superuser %}
+            <a href="{% url 'admin:posts_post_change' post.id %}">
+              <span class="icon">
+                <i class="fas fa-edit" style="margin-right: 0.5em;" aria-hidden="true"></i>
+              </span>
+            </a>
+          {% endif %}
         </div>
         <div>
           <span style="padding-right: 1.2em;">
@@ -38,17 +40,17 @@
       </div>
     </header>
     <div class="card-content">
-      {% if post.is_draft %}
-      <div class="message is-info">
-        <div class="message-body level">
-          <span class="level-left">
-            <i class="fas fa-exclamation-triangle"></i>&nbsp; This is post a Draft
-          </span>
-          {% if post.author == request.user %}
-          <a href="{% url 'posts:post_publish' post.pk %}" class="level-right button is-info is-outlined">Publish</a>
-          {% endif %}
-        </div>
-      </div>
+      {% if request.user.is_superuser %}
+        {% if post.is_draft %}
+          <div class="message is-info">
+            <div class="message-body level">
+              <span class="level-left">
+                <i class="fas fa-exclamation-triangle"></i>&nbsp; This is post a Draft
+              </span>
+              <a href="{% url 'posts:post_publish' post.pk %}" class="level-right button is-info is-outlined">Publish</a>
+            </div>
+          </div>
+        {% endif %}
       {% endif %}
       {{ post.markdown|safe }}
     </div>
