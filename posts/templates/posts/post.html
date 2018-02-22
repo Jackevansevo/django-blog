@@ -1,35 +1,56 @@
-<div class="blog-post pb-5">
-  <div class="d-flex justify-content-between align-items-baseline pb-1">
-    <h2 class="blog-post-title">
-      <a class="text-dark" href="{{ post.get_absolute_url }}">
-        {{ post.title }}
-      </a>
-    </h2>
-    {% if request.user.is_superuser %}
-      <a class="text-dark" href="{% url 'admin:posts_post_change' post.id %}"><i class="fa fa-edit fa-lg" aria-hidden></i></a>
-    {% endif %}
-  </div>
-  <span class="pr-2 d-inline-block"><i class="fa fa-user fa-fw" aria-hidden></i> {{ post.author }}</span>
-  <span class="pr-2 d-inline-block"><i class="fa fa-calendar-alt fa-fw" aria-hidden></i> {{ post.pub_date|date:"SHORT_DATE_FORMAT" }}</span>
-  {% if post.tags.exists %}
-    <div class="pt-2">
-      <i class="fas fa-tag fa-fw" aria-hidden></i>
-      {% for tag in post.tags.all %}
-        <a href="{{ tag.get_absolute_url }}" class="badge badge-dark" style="background-color: {{ tag.color_code }}">{{ tag.name }}</a>
-      {% endfor %}
-    </div>
-  {% endif %}
-  {% if post.is_draft %}
-    <div class="alert alert-warning mt-3 d-flex justify-content-between" role="alert">
-      <span>
-      <i class="fas fa-exclamation-triangle"></i>
-      This is post a <b>Draft</b>
-      </span>
-      {% if post.author == request.user %}
-        <a href="{% url 'posts:post_publish' post.pk %}" class="alert-link">Publish</a>
+<div id="post{{ post.id }}" class="content" style="padding-bottom: 2em;">
+  <div class="card">
+    <header class="card-header" style="padding: 0.8em;">
+      <div style="width: 100%">
+        <div style="display: flex; justify-content: space-between; width: 100%;">
+          <div>
+            <h1>
+              <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+            </h1>
+          </div>
+          <a href="{% url 'admin:posts_post_change' post.id %}">
+            <span class="icon">
+              <i class="fas fa-edit" style="margin-right: 0.5em;" aria-hidden="true"></i>
+            </span>
+          </a>
+        </div>
+        <div>
+          <span style="padding-right: 1.2em;">
+            <i class="fas fa-user" style="margin-right: 0.3em;" aria-hidden="true"></i> {{ post.author }}
+          </span>
+          <span>
+            <i class="fas fa-calendar-alt" style="margin-right: 0.3em;" aria-hidden="true"></i> {{ post.pub_date|date:"SHORT_DATE_FORMAT" }}
+          </span>
+        </div>
+        {% with tags=post.tags.all %}
+          {% if tags %}
+            <div style="padding-top: 0.3rem;">
+              <i class="fas fa-tags" style="margin-right: 0.3em;" aria-hidden="true"></i>
+              {% for tag in tags %}
+              <span class="tag is-dark" style="font-weight: bold; background-color: {{ tag.color_code }};">{{ tag.name }}</span>
+              {{ tag.count }}
+              {% empty %}
+              n/a
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+      </div>
+    </header>
+    <div class="card-content">
+      {% if post.is_draft %}
+      <div class="message is-info">
+        <div class="message-body level">
+          <span class="level-left">
+            <i class="fas fa-exclamation-triangle"></i>&nbsp; This is post a Draft
+          </span>
+          {% if post.author == request.user %}
+          <a href="{% url 'posts:post_publish' post.pk %}" class="level-right button is-info is-outlined">Publish</a>
+          {% endif %}
+        </div>
+      </div>
       {% endif %}
+      {{ post.markdown|safe }}
     </div>
-  {% endif %}
-  <hr>
-  {{ post.markdown|safe }}
+  </div>
 </div>

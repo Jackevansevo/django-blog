@@ -1,87 +1,105 @@
 {% load staticfiles %}
 
 <!doctype html>
-<html lang="en">
+<html lang="en" style="height: 100%;">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Jacks Blog">
-
-    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon" >
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Jacks Blog</title>
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
   </head>
-  <body>
-    <div class="container pt-2">
-      <nav class="navbar navbar-dark bg-dark navbar-expand-lg rounded">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarToggle">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0 d-flex justify-content-between">
-            {% url 'posts:index' as page_url %}
-            {% if request.get_full_path == page_url %}
-              <li class="nav-item active pr-2">
-                <a class="nav-link" href="{{ page_url }}"><i class="fas fa-home" aria-hidden></i>&nbsp; Home</a>
-              </li>
-            {% else %}
-              <li class="nav-item pr-2">
-                <a class="nav-link" href="{{ page_url }}"><i class="fas fa-home" aria-hidden></i>&nbsp; Home</a>
-              </li>
-            {% endif %}
-            <li class="nav-item pr-2">
-              <a class="nav-link" href="https://github.com/Jackevansevo"><i class="fab fa-github" aria-hidden></i>&nbsp; Github</a>
-            </li>
-            <li class="nav-item pr-2">
-              <a class="nav-link" href="https://twitter.com/ThisIsJackEvans"><i class="fab fa-twitter" aria-hidden></i>&nbsp; Twitter</a>
-            </li>
-            <li class="nav-item pr-2">
-              <a class="nav-link" href="{% url 'posts:rss_feed' %}"><i class="fas fa-rss"></i>&nbsp; RSS</a>
-            </li>
-            <li class="nav-item pr-2">
-              <a class="nav-link" href="https://www.dropbox.com/s/0lojfnpkj1bdzow/CV.pdf?dl=0"><i class="far fa-file-pdf" aria-hidden></i>&nbsp; Résumé</a>
-            </li>
-            {% if user.is_authenticated %}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-user" aria-hidden></i>&nbsp; {{ user.username }}
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="{% url 'logout' %}">
-                            <i class="fa fa-sign-out-alt" aria-hidden></i>&nbsp; Logout
-                        </a>
-                        <a class="dropdown-item" href="{% url 'admin:index' %}">
-                            <i class="fas fa-cogs"></i> &nbsp; Admin
-                        </a>
-                    </div>
-                </li>
-            {% endif %}
-          </ul>
-          <form class="form-inline my-2 my-lg-0" method="get" action={% url 'posts:post_search' %}>
-            <div class="input-group">
-              <input class="form-control" name="q" type="search" placeholder="Search" value="{{ request.GET.q }}" required>
-              <div class="input-group-append">
-                <button class="btn btn-success" type="submit"><i class="fas fa-search"></i></button>
+  <body style="background-color: whitesmoke; min-height: 100%;">
+    <nav class="container navbar is-dark">
+      <div class="navbar-brand">
+        <div class="navbar-burger burger" data-target="navbar">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div id="navbar" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="{% url 'posts:index' %}">
+            <i class="fas fa-home"></i>&nbsp; Home
+          </a>
+          <a class="navbar-item" href="https://github.com/Jackevansevo">
+            <i class="fab fa-github"></i>&nbsp; Github
+          </a>
+          <a class="navbar-item" href="https://twitter.com/ThisIsJackEvans">
+            <i class="fab fa-twitter"></i>&nbsp; Twitter
+          </a>
+          <a class="navbar-item" href="{% url 'posts:rss_feed' %}">
+            <i class="fas fa-rss"></i>&nbsp; RSS
+          </a>
+          <a class="navbar-item" href="https://www.dropbox.com/s/0lojfnpkj1bdzow/CV.pdf?dl=0">
+            <i class="far fa-file-pdf"></i>&nbsp; Résumé
+          </a>
+          {% if user.is_authenticated %}
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                <i class="fa fa-user"></i>&nbsp; {{ user.username }}
+              </a>
+              <div class="navbar-dropdown is-boxed">
+                <a class="navbar-item" href="{% url 'logout' %}">
+                  <i class="fa fa-sign-out-alt"></i>&nbsp; Logout
+                </a>
+                <a class="navbar-item" href="{% url 'admin:index' %}">
+                  <i class="fas fa-cogs"></i> &nbsp; Admin
+                </a>
               </div>
             </div>
-          </form>
+          {% endif %}
         </div>
-      </nav>
-    </div>
-
-    {% block body %}
-    {% endblock body %}
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
-
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <form method="GET" action="{% url 'posts:post_search' %}">
+              <div class="field">
+                <div class="field has-addons">
+                  <p class="control has-icons-left">
+                  <input class="input" type="text" name="q" placeholder="Search" required>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-search"></i>
+                  </span>
+                  </p>
+                  <div class="control">
+                    <a class="button is-success">
+                      <i class="fas fa-search"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+    </nav>
+    <section class="section" style="padding-top: 2em;">
+      <div class="container">
+        {% block body %}
+        {% endblock body %}
+      </div>
+    </section>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Get all "navbar-burger" elements
+        var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+        // Check if there are any navbar burgers
+        if ($navbarBurgers.length > 0) {
+          // Add a click event on each of them
+          $navbarBurgers.forEach(function ($el) {
+            $el.addEventListener('click', function () {
+              // Get the target from the "data-target" attribute
+              var target = $el.dataset.target;
+              var $target = document.getElementById(target);
+              // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+              $el.classList.toggle('is-active');
+              $target.classList.toggle('is-active');
+            });
+          });
+        }
+      });
+    </script>
     <noscript id="deferred-styles">
       <link rel="stylesheet" type="text/css" href="{% static 'css/pygments.css' %}"/>
     </noscript>
@@ -93,11 +111,10 @@
         document.body.appendChild(replacement)
         addStylesNode.parentElement.removeChild(addStylesNode);
       };
-      var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-          window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-      if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
-      else window.addEventListener('load', loadDeferredStyles);
+var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+  window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+else window.addEventListener('load', loadDeferredStyles);
     </script>
-
   </body>
 </html>
