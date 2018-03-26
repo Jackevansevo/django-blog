@@ -8,9 +8,7 @@ from .models import Post, Tag
 
 
 def create_post(title, author, is_draft=True):
-    return Post.objects.create(
-        title=title, author=author, is_draft=is_draft
-    )
+    return Post.objects.create(title=title, author=author, is_draft=is_draft)
 
 
 class TagModelTests(TestCase):
@@ -22,15 +20,13 @@ class TagModelTests(TestCase):
         """
         tag = Tag(name='ruby', color_code='#cc342d')
         self.assertEqual(
-            tag.colored_code(),
-            '<span style="color: #cc342d;"> #cc342d</span>'
+            tag.colored_code(), '<span style="color: #cc342d;"> #cc342d</span>'
         )
 
     def test_get_absolute_url(self):
         tag = Tag.objects.create(name='programming')
         self.assertEqual(
-            reverse('posts:tag_detail', args=[tag.slug]),
-            tag.get_absolute_url()
+            reverse('posts:tag_detail', args=[tag.slug]), tag.get_absolute_url()
         )
 
     def test_str(self):
@@ -70,7 +66,7 @@ class PostModelTests(TestCase):
         post = create_post('hello world', self.user)
         self.assertEqual(
             reverse('posts:post_detail', args=[post.slug]),
-            post.get_absolute_url()
+            post.get_absolute_url(),
         )
 
     def test_str(self):
@@ -91,10 +87,7 @@ class HideUnpublishedPostsForAnonymousUsersTests(TestCase):
         response = self.client.get(
             reverse('posts:archive_month', args=[now.year, now.month])
         )
-        self.assertQuerysetEqual(
-            response.context['posts'],
-            ['<Post: test>']
-        )
+        self.assertQuerysetEqual(response.context['posts'], ['<Post: test>'])
 
     def test_search_hides_unpublished_posts(self):
         """
@@ -117,10 +110,7 @@ class HideUnpublishedPostsForAnonymousUsersTests(TestCase):
         unpublished posts should be hidden to anonymous users
         """
         response = self.client.get(reverse('posts:index'))
-        self.assertQuerysetEqual(
-            response.context['posts'],
-            ['<Post: test>']
-        )
+        self.assertQuerysetEqual(response.context['posts'], ['<Post: test>'])
 
     def test_unpublished_posts_visible_to_admin(self):
         """
@@ -129,8 +119,7 @@ class HideUnpublishedPostsForAnonymousUsersTests(TestCase):
         self.client.login(username=self.admin.username, password='secret')
         response = self.client.get(reverse('posts:index'))
         self.assertQuerysetEqual(
-            response.context['posts'],
-            ['<Post: draft>', '<Post: test>']
+            response.context['posts'], ['<Post: draft>', '<Post: test>']
         )
 
 
@@ -181,8 +170,7 @@ class TestPostSearch(TestCase):
         create_post('hello world', self.admin, is_draft=False)
         response = self.client.get(reverse('posts:post_search') + '?q=hello')
         self.assertQuerysetEqual(
-            response.context['posts'],
-            ['<Post: hello world>']
+            response.context['posts'], ['<Post: hello world>']
         )
 
 
@@ -207,7 +195,4 @@ class TestTagView(TestCase):
 
         response = self.client.get(tag.get_absolute_url())
 
-        self.assertQuerysetEqual(
-            response.context['posts'],
-            ['<Post: Test>']
-        )
+        self.assertQuerysetEqual(response.context['posts'], ['<Post: Test>'])

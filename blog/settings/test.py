@@ -5,9 +5,7 @@ DEBUG = False
 TEMPLATE_DEBUG = False
 
 # Use a faster password hasher during testing
-PASSWORD_HASHERS = (
-    'django.contrib.auth.hashers.MD5PasswordHasher',
-)
+PASSWORD_HASHERS = ('django.contrib.auth.hashers.MD5PasswordHasher',)
 
 # Disable unnecessary middleware classes
 INSTALLED_APPS = [
@@ -28,8 +26,4 @@ MIDDLEWARE_CLASSES = [
 ]
 
 # Use a dummy cache
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
-    }
-}
+CACHES = {'default': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'}}

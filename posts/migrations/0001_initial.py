@@ -10,42 +10,63 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-    ]
+    dependencies = [migrations.swappable_dependency(settings.AUTH_USER_MODEL)]
 
     operations = [
         migrations.CreateModel(
             name='Post',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    'id',
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
                 ('title', models.CharField(max_length=200, unique=True)),
                 ('slug', models.SlugField(max_length=200, unique=True)),
-                ('pub_date', models.DateTimeField(default=django.utils.timezone.now)),
+                (
+                    'pub_date',
+                    models.DateTimeField(default=django.utils.timezone.now),
+                ),
                 ('content', models.TextField()),
                 ('markdown', models.TextField(blank=True)),
                 ('is_draft', models.BooleanField(default=True)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    'author',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
-            options={
-                'ordering': ('-pub_date',),
-            },
+            options={'ordering': ('-pub_date',)},
         ),
         migrations.CreateModel(
             name='Tag',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    'id',
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
                 ('name', models.CharField(max_length=200, unique=True)),
                 ('slug', models.SlugField(max_length=200, unique=True)),
                 ('color_code', models.CharField(max_length=7)),
             ],
-            options={
-                'ordering': ('name',),
-            },
+            options={'ordering': ('name',)},
         ),
         migrations.AddField(
             model_name='post',
             name='tags',
-            field=models.ManyToManyField(blank=True, related_name='posts', to='posts.Tag'),
+            field=models.ManyToManyField(
+                blank=True, related_name='posts', to='posts.Tag'
+            ),
         ),
     ]

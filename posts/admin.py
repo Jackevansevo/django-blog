@@ -28,9 +28,7 @@ class TagAdminForm(ModelForm):
     class Meta:
         model = Tag
         fields = '__all__'
-        widgets = {
-            'color_code': TextInput(attrs={'type': 'color'}),
-        }
+        widgets = {'color_code': TextInput(attrs={'type': 'color'})}
 
 
 class PostInline(admin.TabularInline):

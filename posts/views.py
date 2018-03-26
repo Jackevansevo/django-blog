@@ -29,9 +29,9 @@ def index(request):
     if request.user.is_anonymous:
         # Only show published posts
         posts = Post.published.all()
-        tags = tags.annotate(count=Count(
-            'posts', filter=Q(posts__is_draft=False)
-        ))
+        tags = tags.annotate(
+            count=Count('posts', filter=Q(posts__is_draft=False))
+        )
     else:
         posts = Post.objects.all()
         tags = tags.annotate(count=Count('posts'))
@@ -43,20 +43,18 @@ def index(request):
 
     # Only show publised posts in the archive
     archived_months = (
-        posts
-        .filter(is_draft=False)
-        .dates('pub_date', 'month', order='DESC')
+        posts.filter(is_draft=False).dates('pub_date', 'month', order='DESC')
     )
 
     # Paginate the posts
     paginator = Paginator(posts, 5)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
-    return render(request, 'posts/index.html', {
-        'posts': posts,
-        'archive': archived_months,
-        'tags': tags
-    })
+    return render(
+        request,
+        'posts/index.html',
+        {'posts': posts, 'archive': archived_months, 'tags': tags},
+    )
 
 
 @login_required
@@ -64,6 +62,7 @@ def post_publish(request, pk):
     post = Post.objects.get(pk=pk)
     if post.author != request.user:
         raise PermissionDenied
+
     post.is_draft = False
     post.save(update_fields=['is_draft'])
     return redirect(post)
@@ -80,10 +79,9 @@ def tag_detail(request, slug):
     posts = tag.posts.all()
     if request.user.is_anonymous:
         posts = posts.exclude(is_draft=True)
-    return render(request, 'posts/tag_detail.html', {
-        'tag': tag,
-        'posts': posts
-    })
+    return render(
+        request, 'posts/tag_detail.html', {'tag': tag, 'posts': posts}
+    )
 
 
 class PostDetail(DetailView):
@@ -95,6 +93,7 @@ class PostDetail(DetailView):
         obj = super(PostDetail, self).get_object(queryset=queryset)
         if obj.is_draft and self.request.user.is_anonymous:
             raise Http404()
+
         return obj
 
 

@@ -18,8 +18,7 @@ class Tag(models.Model):
 
     def colored_code(self):
         return format_html(
-            '<span style="color: {0};"> {0}</span>',
-            self.color_code,
+            '<span style="color: {0};"> {0}</span>', self.color_code
         )
 
     def get_absolute_url(self):
@@ -34,11 +33,13 @@ class Tag(models.Model):
 
 
 class DraftsPostManager(models.Manager):
+
     def get_queryset(self):
         return super().get_queryset().filter(is_draft=True)
 
 
 class PublishedPostManager(models.Manager):
+
     def get_queryset(self):
         return super().get_queryset().filter(is_draft=False)
 
@@ -52,8 +53,7 @@ class Post(models.Model):
     content = models.TextField()
     markdown = models.TextField(blank=True)
     author = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE
     )
     is_draft = models.BooleanField(default=True)
 
@@ -69,10 +69,11 @@ class Post(models.Model):
 
     def save(self, *args, **kwargs):
         self.markdown = md(
-            self.content, extensions=[
+            self.content,
+            extensions=[
                 'markdown.extensions.fenced_code',
-                'markdown.extensions.codehilite'
-            ]
+                'markdown.extensions.codehilite',
+            ],
         )
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)

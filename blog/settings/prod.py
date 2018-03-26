@@ -9,6 +9,7 @@ def get_env_variable(var_name):
     """Get the environment variable or return exception"""
     try:
         return os.environ[var_name]
+
     except KeyError:
         error_msg = f"Set the {var_name} environment variable"
         raise ImproperlyConfigured(error_msg)
@@ -19,9 +20,7 @@ SECRET_KEY = get_env_variable('SECRET_KEY')
 SERVER_IP = get_env_variable('SERVER_IP')
 DOMAIN_NAME = get_env_variable('DOMAIN_NAME')
 
-INSTALLED_APPS += [
-    'raven.contrib.django.raven_compat',
-]
+INSTALLED_APPS += ['raven.contrib.django.raven_compat']
 
 
 RAVEN_CONFIG = {

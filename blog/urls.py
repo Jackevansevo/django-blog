@@ -12,6 +12,12 @@ urlpatterns = [
     path('posts/', include('posts.urls', namespace='posts')),
     path('manage/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('sitemap.xml', sitemap, {'sitemaps': {'blog': BlogSitemap}},
-         name='django.contrib.sitemaps.views.sitemap')
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path(
+        'sitemap.xml',
+        sitemap,
+        {'sitemaps': {'blog': BlogSitemap}},
+        name='django.contrib.sitemaps.views.sitemap',
+    ),
+] + static(
+    settings.STATIC_URL, document_root=settings.STATIC_ROOT
+)
