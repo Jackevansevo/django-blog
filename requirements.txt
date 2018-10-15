@@ -1,6 +1,6 @@
-argon2-cffi==18.1.0
-Django==2.0.8
-Markdown==2.6.11
+argon2-cffi==18.3.0
+Django==2.1.2
+Markdown==3.0.1
 Pygments==2.2.0
-gunicorn==19.8.1
+gunicorn==19.9.0
 raven==6.9.0
