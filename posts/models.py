@@ -14,7 +14,7 @@ class Tag(models.Model):
     color_code = models.CharField(max_length=7)
 
     class Meta:
-        ordering = ('name',)
+        ordering = ("name",)
 
     def colored_code(self):
         return format_html(
@@ -22,7 +22,7 @@ class Tag(models.Model):
         )
 
     def get_absolute_url(self):
-        return reverse('posts:tag_detail', args=[self.slug])
+        return reverse("posts:tag_detail", args=[self.slug])
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
@@ -33,13 +33,11 @@ class Tag(models.Model):
 
 
 class DraftsPostManager(models.Manager):
-
     def get_queryset(self):
         return super().get_queryset().filter(is_draft=True)
 
 
 class PublishedPostManager(models.Manager):
-
     def get_queryset(self):
         return super().get_queryset().filter(is_draft=False)
 
@@ -49,7 +47,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     pub_date = models.DateTimeField(default=now)
-    tags = models.ManyToManyField(Tag, blank=True, related_name='posts')
+    tags = models.ManyToManyField(Tag, blank=True, related_name="posts")
     content = models.TextField()
     markdown = models.TextField(blank=True)
     author = models.ForeignKey(
@@ -62,17 +60,17 @@ class Post(models.Model):
     drafts = DraftsPostManager()
 
     class Meta:
-        ordering = ('-pub_date',)
+        ordering = ("-pub_date",)
 
     def get_absolute_url(self):
-        return reverse('posts:post_detail', args=[self.slug])
+        return reverse("posts:post_detail", args=[self.slug])
 
     def save(self, *args, **kwargs):
         self.markdown = md(
             self.content,
             extensions=[
-                'markdown.extensions.fenced_code',
-                'markdown.extensions.codehilite',
+                "markdown.extensions.fenced_code",
+                "markdown.extensions.codehilite",
             ],
         )
         self.slug = slugify(self.title)

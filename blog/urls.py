@@ -8,16 +8,14 @@ from posts.views import index
 from posts.sitemap import BlogSitemap
 
 urlpatterns = [
-    path('', index),
-    path('posts/', include('posts.urls', namespace='posts')),
-    path('manage/', admin.site.urls),
-    path('accounts/', include('django.contrib.auth.urls')),
+    path("", index),
+    path("posts/", include("posts.urls", namespace="posts")),
+    path("manage/", admin.site.urls),
+    path("accounts/", include("django.contrib.auth.urls")),
     path(
-        'sitemap.xml',
+        "sitemap.xml",
         sitemap,
-        {'sitemaps': {'blog': BlogSitemap}},
-        name='django.contrib.sitemaps.views.sitemap',
+        {"sitemaps": {"blog": BlogSitemap}},
+        name="django.contrib.sitemaps.views.sitemap",
     ),
-] + static(
-    settings.STATIC_URL, document_root=settings.STATIC_ROOT
-)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
