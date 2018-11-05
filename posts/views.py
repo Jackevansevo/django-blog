@@ -30,30 +30,30 @@ def index(request):
         # Only show published posts
         posts = Post.published.all()
         tags = tags.annotate(
-            count=Count('posts', filter=Q(posts__is_draft=False))
+            count=Count("posts", filter=Q(posts__is_draft=False))
         )
     else:
         posts = Post.objects.all()
-        tags = tags.annotate(count=Count('posts'))
+        tags = tags.annotate(count=Count("posts"))
 
-    posts = posts.select_related('author').prefetch_related('tags')
+    posts = posts.select_related("author").prefetch_related("tags")
 
     # Count the number of posts per tag
-    tags = tags.filter(count__gte=1).order_by('-count')
+    tags = tags.filter(count__gte=1).order_by("-count")
 
     # Only show publised posts in the archive
-    archived_months = (
-        posts.filter(is_draft=False).dates('pub_date', 'month', order='DESC')
+    archived_months = posts.filter(is_draft=False).dates(
+        "pub_date", "month", order="DESC"
     )
 
     # Paginate the posts
     paginator = Paginator(posts, 5)
-    page = request.GET.get('page')
+    page = request.GET.get("page")
     posts = paginator.get_page(page)
     return render(
         request,
-        'posts/index.html',
-        {'posts': posts, 'archive': archived_months, 'tags': tags},
+        "posts/index.html",
+        {"posts": posts, "archive": archived_months, "tags": tags},
     )
 
 
@@ -64,14 +64,14 @@ def post_publish(request, pk):
         raise PermissionDenied
 
     post.is_draft = False
-    post.save(update_fields=['is_draft'])
+    post.save(update_fields=["is_draft"])
     return redirect(post)
 
 
 def post_search(request):
-    query = request.GET.get('q')
+    query = request.GET.get("q")
     posts = Post.published.filter(title__contains=query)
-    return render(request, 'posts/post_search.html', {'posts': posts})
+    return render(request, "posts/post_search.html", {"posts": posts})
 
 
 def tag_detail(request, slug):
@@ -80,14 +80,14 @@ def tag_detail(request, slug):
     if request.user.is_anonymous:
         posts = posts.exclude(is_draft=True)
     return render(
-        request, 'posts/tag_detail.html', {'tag': tag, 'posts': posts}
+        request, "posts/tag_detail.html", {"tag": tag, "posts": posts}
     )
 
 
 class PostDetail(DetailView):
 
     model = Post
-    template = 'posts/post_detail.html'
+    template = "posts/post_detail.html"
 
     def get_object(self, queryset=None):
         obj = super(PostDetail, self).get_object(queryset=queryset)
@@ -101,7 +101,7 @@ class PostMonthArchiveView(MonthArchiveView):
 
     queryset = Post.published.all()
     date_field = "pub_date"
-    context_object_name = 'posts'
+    context_object_name = "posts"
 
 
 class LatestPostsFeed(Feed):
