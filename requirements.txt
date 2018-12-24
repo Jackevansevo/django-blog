@@ -3,4 +3,4 @@ Django==2.1.4
 Markdown==3.0.1
 Pygments==2.3.1
 gunicorn==19.9.0
-raven==6.9.0
+raven==6.10.0
