@@ -10,7 +10,7 @@ from posts.sitemap import BlogSitemap
 urlpatterns = [
     path("", index),
     path("posts/", include("posts.urls", namespace="posts")),
-    path("manage/", admin.site.urls),
+    path("admin/", admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),
     path(
         "sitemap.xml",

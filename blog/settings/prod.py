@@ -1,5 +1,4 @@
 from .base import *
-import raven
 import os
 
 from django.core.exceptions import ImproperlyConfigured
@@ -19,17 +18,6 @@ def get_env_variable(var_name):
 SECRET_KEY = get_env_variable("SECRET_KEY")
 SERVER_IP = get_env_variable("SERVER_IP")
 DOMAIN_NAME = get_env_variable("DOMAIN_NAME")
-
-INSTALLED_APPS += ["raven.contrib.django.raven_compat"]
-
-
-RAVEN_CONFIG = {
-    "dsn": get_env_variable("SENTRY_URL"),
-    # If you are using git, you can also automatically configure the
-    # release based on the git info.
-    "release": raven.fetch_git_sha(os.path.dirname(os.pardir)),
-}
-
 
 STATIC_ROOT = os.path.join(BASE_DIR, "assets/")
 
