@@ -1,4 +1,4 @@
-argon2-cffi==18.3.0
+argon2-cffi==19.1.0
 cffi==1.11.5
 Django==2.1.5
 gunicorn==19.9.0
