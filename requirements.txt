@@ -2,7 +2,7 @@ argon2-cffi==19.1.0
 cffi==1.12.3
 Django==2.2.1
 gunicorn==19.9.0
-Markdown==3.0.1
+Markdown==3.1
 pycparser==2.19
 Pygments==2.3.1
 pytz==2018.7
