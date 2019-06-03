@@ -4,7 +4,7 @@ coverage==4.5.3
 Django==2.2.2
 django-extensions==2.1.7
 gunicorn==19.9.0
-Markdown==3.1
+Markdown==3.1.1
 pycparser==2.19
 Pygments==2.4.0
 pytz==2019.1
