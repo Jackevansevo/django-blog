@@ -2,7 +2,7 @@ argon2-cffi==19.1.0
 cffi==1.12.3
 coverage==4.5.3
 Django==2.2.2
-django-extensions==2.1.6
+django-extensions==2.1.7
 gunicorn==19.9.0
 Markdown==3.1
 pycparser==2.19
