@@ -1,14 +1,14 @@
 {% load staticfiles %}
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" style="height: 100%;">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Jacks Blog</title>
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon" >
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </head>
   <body style="background-color: whitesmoke; min-height: 100%;">
     <nav class="container navbar is-dark">
@@ -23,18 +23,6 @@
         <div class="navbar-start">
           <a class="navbar-item" href="{% url 'posts:index' %}">
             <i class="fas fa-home"></i>&nbsp; Home
-          </a>
-          <a class="navbar-item" href="https://github.com/Jackevansevo">
-            <i class="fab fa-github"></i>&nbsp; Github
-          </a>
-          <a class="navbar-item" href="https://twitter.com/ThisIsJackEvans">
-            <i class="fab fa-twitter"></i>&nbsp; Twitter
-          </a>
-          <a class="navbar-item" href="{% url 'posts:rss_feed' %}">
-            <i class="fas fa-rss"></i>&nbsp; RSS
-          </a>
-          <a class="navbar-item" href="https://www.dropbox.com/s/0lojfnpkj1bdzow/CV.pdf?dl=0">
-            <i class="far fa-file-pdf"></i>&nbsp; Résumé
           </a>
           {% if user.is_authenticated %}
             <div class="navbar-item has-dropdown is-hoverable">

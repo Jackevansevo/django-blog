@@ -8,15 +8,15 @@ from posts.models import Post, Tag
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    date_hierarchy = 'pub_date'
+    date_hierarchy = "pub_date"
 
-    exclude = ('author', 'markdown')
-    prepopulated_fields = {'slug': ('title',)}
+    exclude = ("author", "markdown")
+    prepopulated_fields = {"slug": ("title",)}
 
-    list_display = ('title', 'author', 'pub_date')
-    list_filter = ('tags__name', 'pub_date')
-    autocomplete_fields = ('tags',)
-    search_fields = ('title',)
+    list_display = ("title", "author", "pub_date")
+    list_filter = ("tags__name", "pub_date")
+    autocomplete_fields = ("tags",)
+    search_fields = ("title",)
 
     def save_model(self, request, obj, form, change):
         obj.author = request.user
@@ -24,11 +24,10 @@ class PostAdmin(admin.ModelAdmin):
 
 
 class TagAdminForm(ModelForm):
-
     class Meta:
         model = Tag
-        fields = '__all__'
-        widgets = {'color_code': TextInput(attrs={'type': 'color'})}
+        fields = "__all__"
+        widgets = {"color_code": TextInput(attrs={"type": "color"})}
 
 
 class PostInline(admin.TabularInline):
@@ -38,7 +37,7 @@ class PostInline(admin.TabularInline):
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
     form = TagAdminForm
-    list_display = ('name', 'colored_code')
-    search_fields = ('name',)
+    list_display = ("name", "colored_code")
+    search_fields = ("name",)
     inlines = (PostInline,)
-    prepopulated_fields = {'slug': ('name',)}
+    prepopulated_fields = {"slug": ("name",)}

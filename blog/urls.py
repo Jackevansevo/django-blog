@@ -9,8 +9,8 @@ from posts.sitemap import BlogSitemap
 
 urlpatterns = [
     path("", index),
-    path("posts/", include("posts.urls", namespace="posts")),
     path("admin/", admin.site.urls),
+    path("posts/", include("posts.urls", namespace="posts")),
     path("accounts/", include("django.contrib.auth.urls")),
     path(
         "sitemap.xml",

@@ -7,89 +7,80 @@
             {% for post in posts %}
                 {% include "posts/post.html" %}
             {% empty %}
-                <div class="message is-warning">
-                    <div class="message-body">
-                        <i class="fas fa-exclamation-triangle" aria-hidden></i> &nbsp; No posts available
-                    </div>
+            <div class="message is-warning">
+                <div class="message-body">
+                    <i class="fas fa-exclamation-triangle" aria-hidden></i> &nbsp; No posts available
                 </div>
+            </div>
             {% endfor %}
         </div>
         {% if posts.has_other_pages %}
             <nav class="pagination is-centered" role="navigation" aria-label="pagination">
                 <ul class="pagination-list">
                     <li>
-                      {% if posts.has_previous %}
-                        <a class="pagination-previous" href="?page={{ posts.previous_page_number }}">Previous</a>
-                      {% else %}
-                        <a class="pagination-previous" disabled>Previous</a>
-                      {% endif %}
+                        {% if posts.has_previous %}
+                            <a class="pagination-previous" href="?page={{ posts.previous_page_number }}">Previous</a>
+                        {% else %}
+                            <a class="pagination-previous" disabled>Previous</a>
+                        {% endif %}
                     </li>
                     <li>
-                      {% if posts.has_next %}
-                        <a class="pagination-next" href="?page={{ posts.next_page_number }}">Next</a>
-                      {% else %}
-                        <a class="pagination-next" disabled>Next</a>
-                      {% endif %}
+                        {% if posts.has_next %}
+                            <a class="pagination-next" href="?page={{ posts.next_page_number }}">Next</a>
+                        {% else %}
+                            <a class="pagination-next" disabled>Next</a>
+                        {% endif %}
                     </li>
                 </ul>
             </nav>
         {% endif %}
     </div>
     <div class="column">
-      <div class="card" style="margin-bottom: 2em;">
-        <div class="card-content">
-          <div class="content">
-            <p class="title is-4">About</p>
-            Student/programmer currently studying Computer
-            Science at the University of Bath
-          </div>
+        <div class="card" style="margin-bottom: 2em;">
+            <div class="card-content">
+                <div class="content">
+                    <p class="title is-4">About</p>
+                    {% lorem 10 w %}
+                </div>
+            </div>
         </div>
-      </div>
         {% if tags %}
-            <aside class="menu" style="margin-bottom: 2em;">
-              <div class="card card-content" style="padding: 1em;">
-                <p class="menu-label is-size-6 has-text-black-bis">
-                <i class="fas fa-tags"></i> Tags
-                </p>
-                <ul class="menu-list">
-                    <li>
-                        <ul>
-                            {% for tag in tags %}
-                                <li>
-                                    <a href="{{ tag.get_absolute_url }}">
-                                        <div class="control">
-                                            <div class="tags has-addons">
-                                                <span class="tag is-dark" style="font-weight: bold; background-color: {{ tag.color_code }}">{{ tag.name }}</span>
-                                                <span class="tag is-light" style="font-weight: bold;">{{ tag.count }}</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                </ul>
-              </div>
-            </aside>
+            <div class="box" style="padding: 1em;">
+                <p class="title is-4"><i class="fas fa-tags"></i> Tags</p>
+                <aside class="menu">
+                    <ul class="menu-list">
+                        {% for tag in tags %}
+                            <a href="{{ tag.get_absolute_url }}">
+                                <div class="control">
+                                    <div class="tags has-addons">
+                                        <span class="tag">{{ tag.count }}</span>
+                                        <span class="tag is-dark" style="background-color: {{ tag.color_code }}">{{ tag.name }}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    </ul>
+                </aside>
+            </div>
         {% endif %}
         {% if archive %}
             <aside class="menu">
-              <div class="card">
-                <div class="card-content" style="padding: 1em;">
-                <p class="menu-label is-size-6 has-text-black-bis">
-                <i class="fas fa-calendar-alt"></i> Archive
-                </p>
-                <ul class="menu-list">
-                    <li>
-                        <ul>
-                            {% for segment in archive %}
-                                <li><a href="{% url 'posts:archive_month' segment.year segment.month %}"><time datetime="2016-1-1">{{ segment|date:"M - Y" }}</time></a></li>
-                            {% endfor %}
+                <div class="card">
+                    <div class="card-content" style="padding: 1em;">
+                        <p class="menu-label is-size-6 has-text-black-bis">
+                        <p class="title is-4"><i class="fas fa-calendar-alt"></i> Archive</p>
+                        </p>
+                        <ul class="menu-list">
+                            <li>
+                                <ul>
+                                    {% for segment in archive %}
+                                        <li><a href="{% url 'posts:archive_month' segment.year segment.month %}"><time datetime="2016-1-1">{{ segment|date:"M - Y" }}</time></a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
                         </ul>
-                    </li>
-                </ul>
-              </div>
-              </div>
+                    </div>
+                </div>
             </aside>
         {% endif %}
     </div>
