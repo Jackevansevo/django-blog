@@ -17,9 +17,7 @@ class Tag(models.Model):
         ordering = ("name",)
 
     def colored_code(self):
-        return format_html(
-            '<span style="color: {0};"> {0}</span>', self.color_code
-        )
+        return format_html('<span style="color: {0};"> {0}</span>', self.color_code)
 
     def get_absolute_url(self):
         return reverse("posts:tag_detail", args=[self.slug])
@@ -50,9 +48,7 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag, blank=True, related_name="posts")
     content = models.TextField()
     markdown = models.TextField(blank=True)
-    author = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE
-    )
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     is_draft = models.BooleanField(default=True)
 
     objects = models.Manager()  # The default manager.
