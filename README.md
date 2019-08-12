@@ -21,6 +21,10 @@ Create a virtual environment
 
     python -m venv env
 
+Upgrade pip / setuptools
+
+    pip install -U pip setuptools
+
 Activate the virtual environment
 
     source env/bin/activate
@@ -60,6 +64,8 @@ You may wish to pass some additional flags:
     ./manage.py test posts --failfast --settings=blog.settings.test
 
 ## Test Coverage
+
+    pip install coverage
 
 A coverage report can be generated with the following command:
 
