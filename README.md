@@ -2,12 +2,6 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/Jackevansevo/django-blog/badge.svg?branch=master)](https://coveralls.io/github/Jackevansevo/django-blog?branch=master)
 
-## Requirements
-
-* Django 2.0+
-* Python3.6+
-* PyPy 3.5 compatible
-
 ## Features
 * Code syntax highlighting (with Pygments)
 * RSS support
