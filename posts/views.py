@@ -29,9 +29,7 @@ def index(request):
     if request.user.is_anonymous:
         # Only show published posts
         posts = Post.published.all()
-        tags = tags.annotate(
-            count=Count("posts", filter=Q(posts__is_draft=False))
-        )
+        tags = tags.annotate(count=Count("posts", filter=Q(posts__is_draft=False)))
     else:
         posts = Post.objects.all()
         tags = tags.annotate(count=Count("posts"))
@@ -79,9 +77,7 @@ def tag_detail(request, slug):
     posts = tag.posts.all()
     if request.user.is_anonymous:
         posts = posts.exclude(is_draft=True)
-    return render(
-        request, "posts/tag_detail.html", {"tag": tag, "posts": posts}
-    )
+    return render(request, "posts/tag_detail.html", {"tag": tag, "posts": posts})
 
 
 class PostDetail(DetailView):
