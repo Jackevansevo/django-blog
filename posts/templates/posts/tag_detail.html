@@ -1,0 +1,18 @@
+{% extends "posts/base.html" %}
+
+{% block body %}
+    <div class="card">
+      <div class="card-content" style="padding: 1em;">
+        {% if posts %}
+        <div class="notification is-success">
+          Showing posts tagged with: <b>"{{ tag }}"</b>
+        </div>
+        {% else %}
+        <div class="notification is-warning">
+          <i class="fas fa-exclamation-triangle" aria-hidden></i> &nbsp; No posts found tagged with: <b>"{{ tag }}"</b>
+        </div>
+        {% endif %}
+        {% include "posts/post_result_table.html" %}
+      </div>
+    </div>
+{% endblock body %}

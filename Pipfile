@@ -1,0 +1,26 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[dev-packages]
+flake8 = "*"
+coverage = "*"
+ipython = "*"
+black = "*"
+mypy = "*"
+types-Markdown = "*"
+django-stubs = "*"
+pywatchman = "*"
+ipdb = "*"
+
+[requires]
+python_version = "3.9"
+
+[pipenv]
+allow_prereleases = true
+
+[packages]
+django = "*"
+markdown = "*"
+argon2-cffi = "*"
