@@ -1,0 +1,104 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jacks Blog</title>
+    <link rel="shortcut icon" href="{% static 'posts/favicon.ico' %}" type="image/x-icon" >
+    <link rel="stylesheet" type="text/css" href="{% static 'posts/css/pygments.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  </head>
+  <body style="background-color: whitesmoke; min-height: 100%;">
+    <nav class="container navbar is-dark">
+      <div class="navbar-brand">
+        <div class="navbar-burger burger" data-target="navbar">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div id="navbar" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="{% url 'posts:index' %}">
+            <i class="fas fa-home"></i>&nbsp; Home
+          </a>
+          <a class="navbar-item" href="{% url 'posts:post_list' %}">
+            <i class="fas fa-list"></i>&nbsp; List
+          </a>
+          <a class="navbar-item" href="{% url 'posts:rss_feed' %}">
+            <i class="fas fa-rss"></i>&nbsp; RSS
+          </a>
+          {% if user.is_authenticated %}
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                <i class="fa fa-user"></i>&nbsp; {{ user.username }}
+              </a>
+              <div class="navbar-dropdown is-boxed">
+                <a class="navbar-item" href="{% url 'logout' %}">
+                  <i class="fa fa-sign-out-alt"></i>&nbsp; Logout
+                </a>
+		{% if user.is_staff %}
+		  <a class="navbar-item" href="{% url 'admin:index' %}">
+		    <i class="fas fa-cogs"></i> &nbsp; Admin
+		  </a>
+		  <a class="navbar-item" href="{% url 'admin:posts_post_add' %}">
+		    <i class="fas fa-edit"></i> &nbsp; New Post
+		  </a>
+		{% endif %}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <form method="GET" action="{% url 'posts:post_search' %}">
+              <div class="field">
+                <div class="field has-addons">
+                  <p class="control has-icons-left">
+                  <input class="input" type="text" name="q" placeholder="Search" required>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-search"></i>
+                  </span>
+                  </p>
+                  <div class="control">
+                    <button class="button is-success" type="submit">
+                      <i class="fas fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+    </nav>
+    <section class="section" style="padding-top: 2em;">
+      <div class="container">
+        {% block body %}
+        {% endblock body %}
+      </div>
+    </section>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Get all "navbar-burger" elements
+        var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+        // Check if there are any navbar burgers
+        if ($navbarBurgers.length > 0) {
+          // Add a click event on each of them
+          $navbarBurgers.forEach(function ($el) {
+            $el.addEventListener('click', function () {
+              // Get the target from the "data-target" attribute
+              var target = $el.dataset.target;
+              var $target = document.getElementById(target);
+              // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+              $el.classList.toggle('is-active');
+              $target.classList.toggle('is-active');
+            });
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

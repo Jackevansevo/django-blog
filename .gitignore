@@ -1,0 +1,38 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Database
+db.sqlite3
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Application assets files
+blog/assets
+
+# Environments
+env
+venv
+.envrc
+
+# mypy
+.mypy_cache/
+
+# Tags
+tags
+
+.idea
+
+# Ignore secrets file
+secrets
+blog/static/

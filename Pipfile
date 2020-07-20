@@ -1,0 +1,30 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[dev-packages]
+flake8 = "*"
+coverage = "*"
+ipython = "*"
+black = "*"
+mypy = "*"
+types-Markdown = "*"
+django-stubs = "*"
+pywatchman = "*"
+ipdb = "*"
+isort = "*"
+litecli = "*"
+django-debug-toolbar = "*"
+
+[requires]
+python_version = "3.10"
+
+[packages]
+django = "*"
+markdown = "*"
+argon2-cffi = "*"
+whitenoise = "*"
+gunicorn = "*"
+sentry-sdk = "*"
+pygments = "*"

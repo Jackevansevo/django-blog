@@ -1,0 +1,54 @@
+{% load cache %}
+{% cache 86400 post post.slug %}
+<div class="box">
+  <article class="content">
+    <header>
+      <div class="is-flex" style="justify-content: space-between; width: 100%;">
+        <h1>
+          <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        </h1>
+        {% if request.user.is_superuser %}
+        <a href="{% url 'admin:posts_post_change' post.id %}">
+          <span class="icon">
+            <i class="fas fa-edit" style="margin-right: 0.5em;" aria-hidden="true"></i>
+          </span>
+        </a>
+        {% endif %}
+      </div>
+      {% if request.user.is_superuser and post.is_draft %}
+        <div class="message is-info" style="margin-bottom: 1rem;">
+          <div class="message-body level">
+            <span class="level-left">
+              <i class="fas fa-exclamation-triangle"></i>&nbsp; This is post a Draft
+            </span>
+            <a href="{% url 'posts:post_publish' post.pk %}" class="level-right button is-info is-outlined">Publish</a>
+          </div>
+        </div>
+      {% endif %}
+      <div class="field is-grouped is-grouped-multiline" style="padding-bottom: 1rem;">
+        <div class="control">
+          <div class="tags has-addons">
+            <span class="tag is-dark"><i class="fas fa-user" aria-hidden="true"></i></span>
+            <span class="tag is-link">{{ post.author }}</span>
+          </div>
+        </div>
+        <div class="control">
+          <div class="tags has-addons">
+          <span class="tag is-dark"><i class="fas fa-calendar" aria-hidden="true"></i></span>
+          <span class="tag is-black">{{ post.pub_date|date:"SHORT_DATE_FORMAT" }}</span>
+          </div>
+        </div>
+        {% for tag in post.tags.all %}
+        <div class="control">
+          <div class="tags has-addons">
+            <a href="{{ tag.get_absolute_url }}" class="tag is-dark"><i class="fas fa-tag" aria-hidden="true"></i></span></a>
+            <a href="{{ tag.get_absolute_url }}" class="tag is-dark" style="background-color: {{ tag.color_code }}">{{ tag.name }}</span></a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </header>
+    {{ post.markdown|safe }}
+  </article>
+</div>
+{% endcache %}

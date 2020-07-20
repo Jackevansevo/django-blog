@@ -1,0 +1,22 @@
+name: Python package
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install pipenv
+        run: pipx install pipenv
+      - uses: actions/setup-python@v4
+        with:
+          python-version-file: '.python-version'
+          cache: 'pipenv'
+      - run: pipenv install
+      - run: pipenv run python manage.py test posts --settings=blog.settings.test
