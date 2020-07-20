@@ -1,0 +1,32 @@
+<table class="table is-striped is-hoverable is-fullwidth">
+  <thead style="background: #363636;">
+    <tr>
+      <th scope="col" style="color: white;"><i class="fas fa-align-left" aria-hidden></i>&nbsp; Title</th>
+      <th scope="col" style="color: white;"><i class="fas fa-tag fa-fw" aria-hidden></i>&nbsp; Tags</th>
+      <th scope="col" style="color: white;"><i class="fa fa-calendar-alt fa-fw" aria-hidden></i>&nbsp; Published</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for post in posts %}
+    <tr>
+      <td>
+        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+      </td>
+      <td class="d-none d-sm-table-cell">
+        {% for tag in post.tags.all %}
+        <span class="tag is-dark" style="background-color: {{ tag.color_code }}; font-weight: bold;">{{ tag.name }}</span>
+        {% empty %}
+        -
+        {% endfor %}
+      </td>
+      <td>{{ post.pub_date|date:"SHORT_DATE_FORMAT" }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td> - </td>
+      <td class="d-none d-sm-table-cell"> - </td>
+      <td>-</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
