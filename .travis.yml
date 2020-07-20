@@ -1,0 +1,18 @@
+dist: focal
+language: python
+python:
+  - "3.7"
+  - "3.8"
+  - "3.9"
+  - "pypy3"
+  - "nightly"
+
+install:
+  - pip install pipenv coveralls
+  - pipenv install --dev
+script:
+  - make test
+after_success:
+  coveralls
+env:
+  - DJANGO_SETTINGS_MODULE=blog.settings.test

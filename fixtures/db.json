@@ -1,0 +1,346 @@
+[
+  {
+    "model": "posts.tag",
+    "pk": 1,
+    "fields": {
+      "name": "Python",
+      "slug": "python",
+      "color_code": "#356d9e"
+    }
+  },
+  {
+    "model": "posts.tag",
+    "pk": 2,
+    "fields": {
+      "name": "Clojure",
+      "slug": "clojure",
+      "color_code": "#90b4fe"
+    }
+  },
+  {
+    "model": "posts.tag",
+    "pk": 3,
+    "fields": {
+      "name": "Programming",
+      "slug": "programming",
+      "color_code": "#000000"
+    }
+  },
+  {
+    "model": "posts.tag",
+    "pk": 4,
+    "fields": {
+      "name": "Lisp",
+      "slug": "lisp",
+      "color_code": "#8bc57c"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$100000$URoWg3jnUbiy$1grjz3geoh1rR/cnaGPHlSIAQnTzjZWR2Z4LrN/8D+c=",
+      "last_login": "2018-01-26T16:15:32.018Z",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "admin@blog.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2018-01-26T16:13:30.185Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "0h2p4jfd43uduog71vngcwqxharyskd5",
+    "fields": {
+      "session_data": "MDc2YjFmYjZhZDVmY2ViYjQ4NmIxNjJlOTQ3OTIwZGY1YzhmODQxNjp7Il9hdXRoX3VzZXJfaWQiOiIyIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJmMTY3OTA0MTM1M2FjYWUwYWU1YWJkNTgyODU2MDcyYmVmNTI2NjI2In0=",
+      "expire_date": "2018-02-09T16:15:32.023Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "wnli1q8cj0538ft91tcn0g60b3x2c4mv",
+    "fields": {
+      "session_data": "OTgyODBjNjczMDJjZGRmZWZiOWQ4NTYwMjYzZjFiM2M1YjM5N2Y2Mjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJiMjQwMGQzMzk4MTRhZDNjMjRhOGIxZWRjZjk2NWM1Nzk3NDM2YjAzIn0=",
+      "expire_date": "2018-02-09T15:00:27.322Z"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+      "action_time": "2018-01-26T16:16:42.467Z",
+      "user": 2,
+      "content_type": 1,
+      "object_id": "1",
+      "object_repr": "Secret Plan To Take Over The World",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+      "action_time": "2018-01-26T16:17:20.533Z",
+      "user": 2,
+      "content_type": 1,
+      "object_id": "1",
+      "object_repr": "Secret Plan To Take Over The World",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"content\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+      "action_time": "2018-01-26T16:23:04.778Z",
+      "user": 2,
+      "content_type": 1,
+      "object_id": "2",
+      "object_repr": "Clojure introduction",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+      "action_time": "2018-01-26T16:23:07.258Z",
+      "user": 2,
+      "content_type": 1,
+      "object_id": "2",
+      "object_repr": "Clojure introduction",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"is_published\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+      "action_time": "2018-01-26T16:25:04.012Z",
+      "user": 2,
+      "content_type": 1,
+      "object_id": "3",
+      "object_repr": "Python defaultdicts",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+      "action_time": "2018-01-26T16:25:20.681Z",
+      "user": 2,
+      "content_type": 1,
+      "object_id": "3",
+      "object_repr": "Python defaultdicts",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"content\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+      "action_time": "2018-01-26T16:25:24.609Z",
+      "user": 2,
+      "content_type": 1,
+      "object_id": "3",
+      "object_repr": "Python defaultdicts",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"content\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+      "action_time": "2018-01-26T16:26:43.795Z",
+      "user": 2,
+      "content_type": 1,
+      "object_id": "4",
+      "object_repr": "Lisp cycles",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+      "action_time": "2018-01-26T16:26:55.445Z",
+      "user": 2,
+      "content_type": 1,
+      "object_id": "4",
+      "object_repr": "Lisp cycles",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"pub_date\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+      "action_time": "2018-01-26T16:27:37.177Z",
+      "user": 2,
+      "content_type": 2,
+      "object_id": "4",
+      "object_repr": "Lisp",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+      "action_time": "2018-01-26T16:27:39.903Z",
+      "user": 2,
+      "content_type": 1,
+      "object_id": "4",
+      "object_repr": "Lisp cycles",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"tags\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+      "action_time": "2018-01-26T16:27:53.460Z",
+      "user": 2,
+      "content_type": 2,
+      "object_id": "4",
+      "object_repr": "Lisp",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"color_code\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+      "action_time": "2018-01-26T16:28:20.731Z",
+      "user": 2,
+      "content_type": 2,
+      "object_id": "2",
+      "object_repr": "Clojure",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"color_code\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+      "action_time": "2018-01-26T16:28:43.954Z",
+      "user": 2,
+      "content_type": 2,
+      "object_id": "1",
+      "object_repr": "Python",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"color_code\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+      "action_time": "2018-01-26T16:29:37.215Z",
+      "user": 2,
+      "content_type": 1,
+      "object_id": "5",
+      "object_repr": "Hello world",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "posts.post",
+    "pk": 1,
+    "fields": {
+      "title": "Secret Plan To Take Over The World",
+      "slug": "secret-plan-to-take-over-the-world",
+      "pub_date": "2018-01-26T16:16:11Z",
+      "content": "![pinky and the brain](https://media2.giphy.com/media/VspTn3CPKAHoA/giphy.gif)",
+      "markdown": "<p><img alt=\"pinky and the brain\" src=\"https://media2.giphy.com/media/VspTn3CPKAHoA/giphy.gif\" /></p>",
+      "author": 2,
+      "is_draft": true,
+      "tags": []
+    }
+  },
+  {
+    "model": "posts.post",
+    "pk": 2,
+    "fields": {
+      "title": "Clojure introduction",
+      "slug": "clojure-introduction",
+      "pub_date": "2017-12-07T16:22:32Z",
+      "content": "Clojure is a concise, powerful, and performant general-purpose programming language that runs on the JVM, CLR, Node.js, and modern mobile and desktop web browsers.\r\n\r\nNew to Clojure and not sure where to start? Here are a few good resources to get you off on the right foot:\r\n\r\n```clojure\r\n;; Let's define some data using list / map\r\n;; literals:\r\n\r\n(def scenes [{:subject  \"Frankie\"\r\n              :action   \"say\"\r\n              :object   \"relax\"}\r\n\r\n             {:subject  \"Lucy\"\r\n              :action   \"❤s\"\r\n              :object   \"Clojure\"}\r\n\r\n             {:subject  \"Rich\"\r\n              :action   \"tries\"\r\n              :object   \"a new conditioner\"}])\r\n\r\n;; Define a function\r\n(defn people-in-scenes [scenes]\r\n  (->> scenes\r\n       (map :subject)\r\n       (interpose \", \")\r\n       (reduce str)))\r\n\r\n\r\n;; Who's in our scenes?\r\n\r\n(println \"People:\" (people-in-scenes scenes))\r\n\r\n;;=> People: Frankie, Lucy, Rich\r\n```",
+      "markdown": "<p>Clojure is a concise, powerful, and performant general-purpose programming language that runs on the JVM, CLR, Node.js, and modern mobile and desktop web browsers.</p>\n<p>New to Clojure and not sure where to start? Here are a few good resources to get you off on the right foot:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"c1\">;; Let&#39;s define some data using list / map</span>\n<span class=\"c1\">;; literals:</span>\n\n<span class=\"p\">(</span><span class=\"k\">def </span><span class=\"nv\">scenes</span> <span class=\"p\">[{</span><span class=\"ss\">:subject</span>  <span class=\"s\">&quot;Frankie&quot;</span>\n              <span class=\"ss\">:action</span>   <span class=\"s\">&quot;say&quot;</span>\n              <span class=\"ss\">:object</span>   <span class=\"s\">&quot;relax&quot;</span><span class=\"p\">}</span>\n\n             <span class=\"p\">{</span><span class=\"ss\">:subject</span>  <span class=\"s\">&quot;Lucy&quot;</span>\n              <span class=\"ss\">:action</span>   <span class=\"s\">&quot;❤s&quot;</span>\n              <span class=\"ss\">:object</span>   <span class=\"s\">&quot;Clojure&quot;</span><span class=\"p\">}</span>\n\n             <span class=\"p\">{</span><span class=\"ss\">:subject</span>  <span class=\"s\">&quot;Rich&quot;</span>\n              <span class=\"ss\">:action</span>   <span class=\"s\">&quot;tries&quot;</span>\n              <span class=\"ss\">:object</span>   <span class=\"s\">&quot;a new conditioner&quot;</span><span class=\"p\">}])</span>\n\n<span class=\"c1\">;; Define a function</span>\n<span class=\"p\">(</span><span class=\"kd\">defn </span><span class=\"nv\">people-in-scenes</span> <span class=\"p\">[</span><span class=\"nv\">scenes</span><span class=\"p\">]</span>\n  <span class=\"p\">(</span><span class=\"nf\">-&gt;&gt;</span> <span class=\"nv\">scenes</span>\n       <span class=\"p\">(</span><span class=\"nb\">map </span><span class=\"ss\">:subject</span><span class=\"p\">)</span>\n       <span class=\"p\">(</span><span class=\"nf\">interpose</span> <span class=\"s\">&quot;, &quot;</span><span class=\"p\">)</span>\n       <span class=\"p\">(</span><span class=\"nb\">reduce </span><span class=\"nv\">str</span><span class=\"p\">)))</span>\n\n\n<span class=\"c1\">;; Who&#39;s in our scenes?</span>\n\n<span class=\"p\">(</span><span class=\"nb\">println </span><span class=\"s\">&quot;People:&quot;</span> <span class=\"p\">(</span><span class=\"nf\">people-in-scenes</span> <span class=\"nv\">scenes</span><span class=\"p\">))</span>\n\n<span class=\"c1\">;;=&gt; People: Frankie, Lucy, Rich</span>\n</pre></div>",
+      "author": 2,
+      "is_draft": false,
+      "tags": [
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "model": "posts.post",
+    "pk": 3,
+    "fields": {
+      "title": "Python defaultdicts",
+      "slug": "python-defaultdicts",
+      "pub_date": "2017-09-14T16:24:42Z",
+      "content": "Using list as the `default_factory`, it is easy to group a sequence of key-value pairs into a dictionary of lists:\r\n\r\n```pycon\r\n>>> s = [('yellow', 1), ('blue', 2), ('yellow', 3), ('blue', 4), ('red', 1)]\r\n>>> d = defaultdict(list)\r\n>>> for k, v in s:\r\n...     d[k].append(v)\r\n...\r\n>>> sorted(d.items())\r\n[('blue', [2, 4]), ('red', [1]), ('yellow', [1, 3])]\r\n```",
+      "markdown": "<p>Using list as the <code>default_factory</code>, it is easy to group a sequence of key-value pairs into a dictionary of lists:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"p\">[(</span><span class=\"s1\">&#39;yellow&#39;</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">),</span> <span class=\"p\">(</span><span class=\"s1\">&#39;blue&#39;</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">),</span> <span class=\"p\">(</span><span class=\"s1\">&#39;yellow&#39;</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">),</span> <span class=\"p\">(</span><span class=\"s1\">&#39;blue&#39;</span><span class=\"p\">,</span> <span class=\"mi\">4</span><span class=\"p\">),</span> <span class=\"p\">(</span><span class=\"s1\">&#39;red&#39;</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">d</span> <span class=\"o\">=</span> <span class=\"n\">defaultdict</span><span class=\"p\">(</span><span class=\"nb\">list</span><span class=\"p\">)</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">for</span> <span class=\"n\">k</span><span class=\"p\">,</span> <span class=\"n\">v</span> <span class=\"ow\">in</span> <span class=\"n\">s</span><span class=\"p\">:</span>\n<span class=\"gp\">... </span>    <span class=\"n\">d</span><span class=\"p\">[</span><span class=\"n\">k</span><span class=\"p\">]</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"n\">v</span><span class=\"p\">)</span>\n<span class=\"gp\">...</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">sorted</span><span class=\"p\">(</span><span class=\"n\">d</span><span class=\"o\">.</span><span class=\"n\">items</span><span class=\"p\">())</span>\n<span class=\"go\">[(&#39;blue&#39;, [2, 4]), (&#39;red&#39;, [1]), (&#39;yellow&#39;, [1, 3])]</span>\n</pre></div>",
+      "author": 2,
+      "is_draft": false,
+      "tags": [
+        3,
+        1
+      ]
+    }
+  },
+  {
+    "model": "posts.post",
+    "pk": 4,
+    "fields": {
+      "title": "Lisp cycles",
+      "slug": "lisp-cycles",
+      "pub_date": "2017-07-26T16:26:12Z",
+      "content": "![xckd Lisp Cycles](https://imgs.xkcd.com/comics/lisp_cycles.png)",
+      "markdown": "<p><img alt=\"xckd Lisp Cycles\" src=\"https://imgs.xkcd.com/comics/lisp_cycles.png\" /></p>",
+      "author": 2,
+      "is_draft": false,
+      "tags": [
+        4,
+        3
+      ]
+    }
+  },
+  {
+    "model": "posts.post",
+    "pk": 5,
+    "fields": {
+      "title": "Hello world",
+      "slug": "hello-world",
+      "pub_date": "2017-03-16T16:28:57Z",
+      "content": "![Waving Bear](http://www.reactiongifs.com/r/hello-bear.gif)",
+      "markdown": "<p><img alt=\"Waving Bear\" src=\"http://www.reactiongifs.com/r/hello-bear.gif\" /></p>",
+      "author": 2,
+      "is_draft": false,
+      "tags": []
+    }
+  }
+]
