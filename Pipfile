@@ -3,11 +3,6 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
 
-[packages]
-argon2-cffi = "==20.1.0"
-Django = "==3.2"
-Markdown = "==3.3.3"
-
 [dev-packages]
 coverage = "*"
 ipython = "*"
@@ -18,3 +13,8 @@ python_version = "3.9"
 
 [pipenv]
 allow_prereleases = true
+
+[packages]
+django = "*"
+markdown = "*"
+argon2-cffi = "*"
