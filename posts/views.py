@@ -3,7 +3,7 @@ from django.contrib.syndication.views import Feed
 from django.core.exceptions import PermissionDenied
 from django.core.paginator import Paginator
 from django.db.models import Count, Q
-from django.http import Http404
+from django.http import Http404, HttpRequest
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.safestring import mark_safe
 from django.views.generic.dates import MonthArchiveView
@@ -22,7 +22,7 @@ from .models import Post, Tag
 # - Static files (i.e. uploadable images to put in blog posts)
 
 
-def index(request):
+def index(request: HttpRequest):
 
     tags = Tag.objects.all()
 
@@ -47,16 +47,15 @@ def index(request):
     # Paginate the posts
     paginator = Paginator(posts, 5)
     page = request.GET.get("page")
-    posts = paginator.get_page(page)
     return render(
         request,
         "posts/index.html",
-        {"posts": posts, "archive": archived_months, "tags": tags},
+        {"posts": paginator.get_page(page), "archive": archived_months, "tags": tags},
     )
 
 
 @login_required
-def post_publish(request, pk):
+def post_publish(request: HttpRequest, pk: int):
     post = Post.objects.get(pk=pk)
     if post.author != request.user:
         raise PermissionDenied
@@ -66,15 +65,15 @@ def post_publish(request, pk):
     return redirect(post)
 
 
-def post_search(request):
+def post_search(request: HttpRequest):
     query = request.GET.get("q")
     posts = Post.published.filter(title__contains=query)
     return render(request, "posts/post_search.html", {"posts": posts})
 
 
-def tag_detail(request, slug):
-    tag = get_object_or_404(Tag, slug=slug)
-    posts = tag.posts.all()
+def tag_detail(request: HttpRequest, slug: str):
+    tag: Tag = get_object_or_404(Tag, slug=slug)
+    posts = tag.posts.all()  # type: ignore
     if request.user.is_anonymous:
         posts = posts.exclude(is_draft=True)
     return render(request, "posts/tag_detail.html", {"tag": tag, "posts": posts})
