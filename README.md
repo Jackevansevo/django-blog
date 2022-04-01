@@ -37,7 +37,7 @@ Initialize the database
 
 # Running Tests
 
-All Djagno tests can be ran with the following:
+All Django tests can be ran with the following:
 
     ./manage.py test posts --settings=blog.settings.test
 
