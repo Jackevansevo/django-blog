@@ -44,13 +44,13 @@ class PostModelManagersTest(TestCase):
         """
         the draft model manager should only return draft posts
         """
-        self.assertQuerysetEqual(Post.drafts.all(), ["<Post: draft>"])
+        self.assertQuerysetEqual(Post.drafts.all(), ["<Post: draft>"], transform=repr)
 
     def test_published_model_manager(self):
         """
         the published model manager should only return published posts
         """
-        self.assertQuerysetEqual(Post.published.all(), ["<Post: test>"])
+        self.assertQuerysetEqual(Post.published.all(), ["<Post: test>"], transform=repr)
 
 
 class PostModelTests(TestCase):
@@ -82,14 +82,16 @@ class HideUnpublishedPostsForAnonymousUsersTests(TestCase):
         response = self.client.get(
             reverse("posts:archive_month", args=[now.year, now.month])
         )
-        self.assertQuerysetEqual(response.context["posts"], ["<Post: test>"])
+        self.assertQuerysetEqual(
+            response.context["posts"], ["<Post: test>"], transform=repr
+        )
 
     def test_search_hides_unpublished_posts(self):
         """
         the search view should only return results from published posts
         """
         response = self.client.get(reverse("posts:post_search") + "?q=draft")
-        self.assertQuerysetEqual(response.context["posts"], [])
+        self.assertQuerysetEqual(response.context["posts"], [], transform=repr)
 
     def test_draft_post_route_404s(self):
         """
@@ -105,7 +107,9 @@ class HideUnpublishedPostsForAnonymousUsersTests(TestCase):
         unpublished posts should be hidden to anonymous users
         """
         response = self.client.get(reverse("posts:index"))
-        self.assertQuerysetEqual(response.context["posts"], ["<Post: test>"])
+        self.assertQuerysetEqual(
+            response.context["posts"], ["<Post: test>"], transform=repr
+        )
 
     def test_unpublished_posts_visible_to_admin(self):
         """
@@ -114,7 +118,7 @@ class HideUnpublishedPostsForAnonymousUsersTests(TestCase):
         self.client.login(username=self.admin.username, password="secret")
         response = self.client.get(reverse("posts:index"))
         self.assertQuerysetEqual(
-            response.context["posts"], ["<Post: draft>", "<Post: test>"]
+            response.context["posts"], ["<Post: draft>", "<Post: test>"], transform=repr
         )
 
 
@@ -160,7 +164,9 @@ class TestPostSearch(TestCase):
     def test_post_search(self):
         create_post("hello world", self.admin, is_draft=False)
         response = self.client.get(reverse("posts:post_search") + "?q=hello")
-        self.assertQuerysetEqual(response.context["posts"], ["<Post: hello world>"])
+        self.assertQuerysetEqual(
+            response.context["posts"], ["<Post: hello world>"], transform=repr
+        )
 
 
 class TestTagView(TestCase):
@@ -183,4 +189,6 @@ class TestTagView(TestCase):
 
         response = self.client.get(tag.get_absolute_url())
 
-        self.assertQuerysetEqual(response.context["posts"], ["<Post: Test>"])
+        self.assertQuerysetEqual(
+            response.context["posts"], ["<Post: Test>"], transform=repr
+        )
