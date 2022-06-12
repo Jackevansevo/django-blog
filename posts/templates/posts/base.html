@@ -36,12 +36,14 @@
                 <a class="navbar-item" href="{% url 'logout' %}">
                   <i class="fa fa-sign-out-alt"></i>&nbsp; Logout
                 </a>
-                <a class="navbar-item" href="{% url 'admin:index' %}">
-                  <i class="fas fa-cogs"></i> &nbsp; Admin
-                </a>
-                <a class="navbar-item" href="{% url 'admin:posts_post_add' %}">
-                  <i class="fas fa-edit"></i> &nbsp; New Post
-                </a>
+		{% if user.is_staff %}
+		  <a class="navbar-item" href="{% url 'admin:index' %}">
+		    <i class="fas fa-cogs"></i> &nbsp; Admin
+		  </a>
+		  <a class="navbar-item" href="{% url 'admin:posts_post_add' %}">
+		    <i class="fas fa-edit"></i> &nbsp; New Post
+		  </a>
+		{% endif %}
               </div>
             </div>
           {% endif %}
