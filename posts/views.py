@@ -8,6 +8,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.safestring import mark_safe
 from django.views.generic.dates import MonthArchiveView
 from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
 
 from .models import Post, Tag
 
@@ -77,6 +78,16 @@ def tag_detail(request: HttpRequest, slug: str):
     if request.user.is_anonymous:
         posts = posts.exclude(is_draft=True)
     return render(request, "posts/tag_detail.html", {"tag": tag, "posts": posts})
+
+
+class PostList(ListView):
+
+    model = Post
+    template = "posts/post_list.html"
+    context_object_name = "posts"
+
+    def get_queryset(self, queryset=None):
+        return Post.published.all()
 
 
 class PostDetail(DetailView):

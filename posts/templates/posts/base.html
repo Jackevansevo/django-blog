@@ -24,6 +24,9 @@
           <a class="navbar-item" href="{% url 'posts:index' %}">
             <i class="fas fa-home"></i>&nbsp; Home
           </a>
+          <a class="navbar-item" href="{% url 'posts:post_list' %}">
+            <i class="fas fa-list"></i>&nbsp; List
+          </a>
           {% if user.is_authenticated %}
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">

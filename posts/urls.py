@@ -6,6 +6,8 @@ app_name = "posts"
 urlpatterns = [
     # Index page
     path("", views.index, name="index"),
+    # List views
+    path("list/", views.PostList.as_view(), name="post_list"),
     # Search view
     path("search/", views.post_search, name="post_search"),
     # Publish end point

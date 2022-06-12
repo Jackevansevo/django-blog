@@ -2,6 +2,7 @@
   <thead style="background: #363636;">
     <tr>
       <th scope="col" style="color: white;"><i class="fas fa-align-left" aria-hidden></i>&nbsp; Title</th>
+      <th scope="col" style="color: white;"><i class="fas fa-user fa-fw" aria-hidden></i>&nbsp; Author</th>
       <th scope="col" style="color: white;"><i class="fas fa-tag fa-fw" aria-hidden></i>&nbsp; Tags</th>
       <th scope="col" style="color: white;"><i class="fa fa-calendar-alt fa-fw" aria-hidden></i>&nbsp; Published</th>
     </tr>
@@ -11,6 +12,12 @@
     <tr>
       <td>
         <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+      </td>
+      <td>
+        <div class="tags has-addons">
+	  <span class="tag is-dark"><i class="fas fa-user" aria-hidden="true"></i></span>
+	  <span class="tag is-link">{{ post.author }}</span>
+	</div>
       </td>
       <td class="d-none d-sm-table-cell">
         {% for tag in post.tags.all %}
