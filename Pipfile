@@ -24,3 +24,4 @@ allow_prereleases = true
 django = "*"
 markdown = "*"
 argon2-cffi = "*"
+whitenoise = "*"
