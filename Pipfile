@@ -13,15 +13,15 @@ types-Markdown = "*"
 django-stubs = "*"
 pywatchman = "*"
 ipdb = "*"
+isort = "*"
 
 [requires]
 python_version = "3.10"
-
-[pipenv]
-allow_prereleases = true
 
 [packages]
 django = "*"
 markdown = "*"
 argon2-cffi = "*"
 whitenoise = "*"
+gunicorn = "*"
+sentry-sdk = "*"
