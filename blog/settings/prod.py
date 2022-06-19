@@ -46,3 +46,10 @@ DATABASES = {
         "NAME": "/data/db.sqlite3",
     }
 }
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": "/tmp/blog_cache",
+    }
+}
