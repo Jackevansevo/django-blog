@@ -10,6 +10,9 @@ processes = []
   DJANGO_SETTINGS_MODULE = "blog.settings.prod"
   HOSTNAME = "restless-frost-7413.fly.dev"
 
+[build.args]
+  DJANGO_SETTINGS_MODULE = "blog.settings.prod"
+
 [experimental]
   allowed_public_ports = []
   auto_rollback = true
