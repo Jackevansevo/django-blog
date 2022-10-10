@@ -38,7 +38,7 @@ pywatchman==1.4.1
 setuptools==65.4.1
 six==1.16.0
 sqlparse==0.4.3
-stack-data==0.3.0
+stack-data==0.5.1
 tabulate[widechars]==0.8.10
 toml==0.10.2
 tomli==2.0.1
