@@ -13,7 +13,7 @@ django-debug-toolbar==3.7.0
 django-stubs==1.13.0
 django-stubs-ext==0.7.0
 executing==1.2.0
-flake8==4.0.1
+flake8==5.0.4
 ipdb==0.13.9
 ipython==8.4.0
 isort==5.10.1
