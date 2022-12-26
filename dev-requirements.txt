@@ -1,6 +1,6 @@
 -i https://pypi.org/simple
 asgiref==3.6.0
-asttokens==2.0.5
+asttokens==2.2.1
 backcall==0.2.0
 black==22.6.0
 cli-helpers[styles]==2.2.1
