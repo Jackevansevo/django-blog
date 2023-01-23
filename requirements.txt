@@ -12,5 +12,5 @@ pygments==2.14.0
 sentry-sdk==1.14.0
 setuptools==66.1.1
 sqlparse==0.4.3
-urllib3==1.26.13
+urllib3==1.26.14
 whitenoise==6.2.0
