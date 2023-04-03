@@ -45,6 +45,6 @@ tomli==2.0.1
 traitlets==5.9.0
 types-markdown==3.4.2.6
 types-pytz==2023.3.0.0
-types-pyyaml==6.0.12.2
+types-pyyaml==6.0.12.9
 typing-extensions==4.4.0
 wcwidth==0.2.5
