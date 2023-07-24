@@ -9,7 +9,7 @@ gunicorn==21.2.0
 markdown==3.4.3
 pycparser==2.21
 pygments==2.15.1
-sentry-sdk==1.12.1
+sentry-sdk==1.28.1
 setuptools==68.0.0
 sqlparse==0.4.4
 urllib3==1.26.13
