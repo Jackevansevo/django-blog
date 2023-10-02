@@ -12,7 +12,7 @@ django==4.2.5
 django-debug-toolbar==4.2.0
 django-stubs==4.2.4
 django-stubs-ext==4.2.2
-executing==1.2.0
+executing==2.0.0
 flake8==6.0.0
 ipdb==0.13.11
 ipython==8.7.0
