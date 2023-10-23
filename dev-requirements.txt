@@ -14,7 +14,7 @@ django-stubs==4.2.5
 django-stubs-ext==4.2.5
 executing==2.0.0
 flake8==6.1.0
-ipdb==0.13.11
+ipdb==0.13.13
 ipython==8.7.0
 isort==5.11.4
 jedi==0.18.2
