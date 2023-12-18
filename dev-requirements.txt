@@ -31,7 +31,7 @@ platformdirs==4.1.0
 prompt-toolkit==3.0.43
 ptyprocess==0.7.0
 pure-eval==0.2.2
-pycodestyle==2.10.0
+pycodestyle==2.11.1
 pyflakes==3.0.1
 pygments==2.13.0
 pywatchman==1.4.1
