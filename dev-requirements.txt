@@ -34,7 +34,7 @@ pure-eval==0.2.3
 pycodestyle==2.12.1
 pyflakes==3.2.0
 pygments==2.18.0
-pywatchman==1.4.1
+pywatchman==2.0.0
 setuptools==65.6.3
 six==1.16.0
 sqlparse==0.4.3
