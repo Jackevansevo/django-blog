@@ -32,7 +32,7 @@ prompt-toolkit==3.0.47
 ptyprocess==0.7.0
 pure-eval==0.2.3
 pycodestyle==2.12.1
-pyflakes==3.0.1
+pyflakes==3.2.0
 pygments==2.13.0
 pywatchman==1.4.1
 setuptools==65.6.3
