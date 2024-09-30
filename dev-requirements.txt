@@ -11,7 +11,7 @@ decorator==5.1.1
 django==5.1.1
 django-debug-toolbar==4.4.6
 django-stubs==5.1.0
-django-stubs-ext==0.7.0
+django-stubs-ext==5.1.0
 executing==1.2.0
 flake8==6.0.0
 ipdb==0.13.11
