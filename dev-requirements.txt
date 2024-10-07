@@ -15,7 +15,7 @@ django-stubs-ext==5.1.0
 executing==2.1.0
 flake8==7.1.1
 ipdb==0.13.13
-ipython==8.7.0
+ipython==8.28.0
 isort==5.11.4
 jedi==0.18.2
 litecli==1.9.0
