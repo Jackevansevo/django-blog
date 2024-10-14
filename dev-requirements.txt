@@ -46,5 +46,5 @@ traitlets==5.14.3
 types-markdown==3.7.0.20240822
 types-pytz==2024.2.0.20241003
 types-pyyaml==6.0.12.20240917
-typing-extensions==4.4.0
+typing-extensions==4.12.2
 wcwidth==0.2.5
