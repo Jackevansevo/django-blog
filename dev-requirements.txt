@@ -8,7 +8,7 @@ click==8.1.7
 configobj==5.0.9
 coverage==7.6.3
 decorator==5.1.1
-django==4.1.4
+django==5.1.2
 django-debug-toolbar==3.8.1
 django-stubs==1.13.1
 django-stubs-ext==0.7.0
