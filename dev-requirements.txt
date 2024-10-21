@@ -25,7 +25,7 @@ mypy==1.12.1
 mypy-extensions==1.0.0
 parso==0.8.4
 pathspec==0.12.1
-pexpect==4.8.0
+pexpect==4.9.0
 pickleshare==0.7.5
 platformdirs==2.6.0
 prompt-toolkit==3.0.36
