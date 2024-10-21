@@ -17,7 +17,7 @@ flake8==7.1.1
 ipdb==0.13.13
 ipython==8.28.0
 isort==5.13.2
-jedi==0.18.2
+jedi==0.19.1
 litecli==1.9.0
 matplotlib-inline==0.1.6
 mccabe==0.7.0
