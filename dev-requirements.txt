@@ -1,5 +1,5 @@
 -i https://pypi.org/simple
-asgiref==3.6.0
+asgiref==3.8.1
 asttokens==2.2.1
 backcall==0.2.0
 black==22.12.0
