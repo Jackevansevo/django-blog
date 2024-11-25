@@ -30,7 +30,7 @@ pickleshare==0.7.5
 platformdirs==4.3.6
 prompt-toolkit==3.0.48
 ptyprocess==0.7.0
-pure-eval==0.2.2
+pure-eval==0.2.3
 pycodestyle==2.10.0
 pyflakes==3.0.1
 pygments==2.13.0
