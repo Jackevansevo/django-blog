@@ -13,4 +13,4 @@ sentry-sdk==2.19.0
 setuptools==75.6.0
 sqlparse==0.5.2
 urllib3==2.2.3
-whitenoise==6.2.0
+whitenoise==6.8.2
